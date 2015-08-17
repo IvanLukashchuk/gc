@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot' 
+apply plugin: 'io.spring.dependency-management' 
+apply plugin: 'war'
+
+
+war {
+    baseName = 'googleclone'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.24'
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'jstl:jstl:1.2'
+    compile 'org.apache.logging.log4j:log4j-core:2.3'
+    compile 'org.springframework:spring-core:4.2.0.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.0.RELEASE'
+    compile 'org.apache.lucene:lucene-core:5.2.1'
+    compile 'org.apache.lucene:lucene-analyzers-common:5.2.1'
+    compile 'org.apache.lucene:lucene-queryparser:5.2.1'
+    compile 'edu.uci.ics:crawler4j:4.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

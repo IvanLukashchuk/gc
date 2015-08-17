@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="2">
+    <properties>
+        <property name="layOutPattern">%d{ISO8601} %5level : %t : %C  -->  %m%n%ex</property>
+        <property name="level">TRACE</property>
+        <property name="append">true</property>
+    </properties>
+    <appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layOutPattern}"/>
+        </Console>
+    </appenders>
+    <loggers>
+        <root level="${level}">
+            <appender-ref ref="console"/>
+        </root>
+    </loggers>
+</configuration>

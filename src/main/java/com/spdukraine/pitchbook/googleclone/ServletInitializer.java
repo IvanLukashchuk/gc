@@ -1,0 +1,14 @@
+package com.spdukraine.pitchbook.googleclone;
+
+import com.spdukraine.pitchbook.googleclone.config.SpringConfig;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(SpringConfig.class);
+	}
+
+}
